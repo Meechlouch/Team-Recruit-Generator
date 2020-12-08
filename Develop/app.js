@@ -76,10 +76,10 @@ function generateTeam() {
           switch (answers.role) {
             case "Engineer":
               return new Engineer(employee.name, employee.id, employee.email, employee.github);
-              break;
             case "Manager":
               return new Manager(employee.name, employee.id, employee.email, employee.officeNumber);
-              break;
+            case "Intern":
+              return new Intern(employee.name, employee.id, employee.email, employee.school);
             default:
               throw "Team Member is not recognized";
           }
