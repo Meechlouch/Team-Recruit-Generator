@@ -77,6 +77,9 @@ function generateTeam() {
             case "Engineer":
               return new Engineer(employee.name, employee.id, employee.email, employee.github);
               break;
+            case "Manager":
+              return new Manager(employee.name, employee.id, employee.email, employee.officeNumber);
+              break;
             default:
               throw "Team Member is not recognized";
           }
