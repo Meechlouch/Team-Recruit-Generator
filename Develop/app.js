@@ -21,6 +21,29 @@ function generateTeam() {
         choices: ["Engineer", "Intern", "Manager"],
         name: "role",
       },
+      {
+        type: "input",
+        message: "What is Team Member's name?",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "What is the Team Member's id?",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "What is the Team Member's Email?",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What is the name of the school that the Team Intern attended?",
+        name: "school",
+        when: (answers) => {
+          return answers.role === "Intern";
+        },
+      },
     ])
     .then(() => {})
     .catch(() => {});
