@@ -52,8 +52,25 @@ function generateTeam() {
           return answers.role === "Engineer";
         },
       },
+      {
+        type: "input",
+        message: "What is the Team Manager's Office Number?",
+        name: "officeNumber",
+        when: (answers) => {
+          return answers.role === "Manager";
+        },
+      },
+      {
+        type: "confirm",
+        message: "Would you like to recruit another Team Member?",
+        name: "recruit",
+      },
     ])
-    .then(() => {})
+    .then((answers) => {
+      if (answers.recruit) {
+        generateTeam();
+      }
+    })
     .catch(() => {});
 }
 
