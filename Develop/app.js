@@ -84,6 +84,10 @@ function generateTeam() {
               throw "Team Member is not recognized";
           }
         });
+        fs.writeFile(outputPath, render(teamMembers), (err) => {
+          if (err) throw err;
+          console.log("The file has been saved!");
+        });
         console.log(teamMembers);
       }
     })
