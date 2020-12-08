@@ -44,6 +44,14 @@ function generateTeam() {
           return answers.role === "Intern";
         },
       },
+      {
+        type: "input",
+        message: "What is the Team Engineer's GitHub username?",
+        name: "github",
+        when: (answers) => {
+          return answers.role === "Engineer";
+        },
+      },
     ])
     .then(() => {})
     .catch(() => {});
