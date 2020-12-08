@@ -10,6 +10,24 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const potentialRecruits = [];
+
+function generateTeam() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "What is the Team Member's role?",
+        choices: ["Engineer", "Intern", "Manager"],
+        name: "role",
+      },
+    ])
+    .then(() => {})
+    .catch(() => {});
+}
+
+generateTeam();
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
