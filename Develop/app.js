@@ -67,6 +67,8 @@ function generateTeam() {
       },
     ])
     .then((answers) => {
+      potentialRecruits.push(answers);
+      console.log(potentialRecruits);
       if (answers.recruit) {
         generateTeam();
       }
