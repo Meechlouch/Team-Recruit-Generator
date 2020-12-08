@@ -10,7 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-const potentialRecruits = [];
+const inquirerAnswers = [];
 
 function generateTeam() {
   inquirer
@@ -67,13 +67,28 @@ function generateTeam() {
       },
     ])
     .then((answers) => {
-      potentialRecruits.push(answers);
-      console.log(potentialRecruits);
+      inquirerAnswers.push(answers);
+      console.log(inquirerAnswers);
       if (answers.recruit) {
         generateTeam();
+      } else {
+        const teamMembers = inquirerAnswers.map((employee) => {
+          switch (answers.role) {
+            case "Engineer":
+              return new Engineer(employee.name, employee.id, employee.email, employee.github);
+              break;
+            default:
+              throw "Team Member is not recognized";
+          }
+        });
+        console.log(teamMembers);
       }
     })
-    .catch(() => {});
+    .catch((err) => {
+      if (err) {
+        throw ("Error: ", err);
+      }
+    });
 }
 
 generateTeam();
