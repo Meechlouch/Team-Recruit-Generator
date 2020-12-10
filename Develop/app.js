@@ -73,17 +73,17 @@ function generateTeam() {
       if (answers.recruit) {
         generateTeam();
       } else {
-        const teamMembers = inquirerAnswers.map((employee) => {
-          switch (employee.role) {
+        const teamMembers = inquirerAnswers.map((recruited) => {
+          switch (recruited.role) {
             case "Engineer":
-              console.log(new Engineer(employee.name, employee.id, employee.email, employee.github));
-              return new Engineer(employee.name, employee.id, employee.email, employee.github);
+              console.log(new Engineer(recruited.name, recruited.id, recruited.email, recruited.github));
+              return new Engineer(recruited.name, recruited.id, recruited.email, recruited.github);
             case "Manager":
-              console.log(new Manager(employee.name, employee.id, employee.email, employee.officeNumber));
-              return new Manager(employee.name, employee.id, employee.email, employee.officeNumber);
+              console.log(new Manager(recruited.name, recruited.id, recruited.email, recruited.officeNumber));
+              return new Manager(recruited.name, recruited.id, recruited.email, recruited.officeNumber);
             case "Intern":
-              console.log(new Intern(employee.name, employee.id, employee.email, employee.school));
-              return new Intern(employee.name, employee.id, employee.email, employee.school);
+              console.log(new Intern(recruited.name, recruited.id, recruited.email, recruited.school));
+              return new Intern(recruited.name, recruited.id, recruited.email, recruited.school);
             default:
               console.log("Team Member is not recognized");
           }
