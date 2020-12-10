@@ -67,28 +67,34 @@ function generateTeam() {
       },
     ])
     .then((answers) => {
+      console.log(answers);
       inquirerAnswers.push(answers);
       console.log(inquirerAnswers);
       if (answers.recruit) {
         generateTeam();
       } else {
         const teamMembers = inquirerAnswers.map((employee) => {
-          switch (answers.role) {
+          switch (employee.role) {
             case "Engineer":
+              console.log(new Engineer(employee.name, employee.id, employee.email, employee.github));
               return new Engineer(employee.name, employee.id, employee.email, employee.github);
             case "Manager":
+              console.log(new Manager(employee.name, employee.id, employee.email, employee.officeNumber));
               return new Manager(employee.name, employee.id, employee.email, employee.officeNumber);
             case "Intern":
+              console.log(new Intern(employee.name, employee.id, employee.email, employee.school));
               return new Intern(employee.name, employee.id, employee.email, employee.school);
             default:
-              throw "Team Member is not recognized";
+              console.log("Team Member is not recognized");
           }
         });
+        console.log(teamMembers);
         fs.writeFile(outputPath, render(teamMembers), (err) => {
-          if (err) throw err;
+          if (err) {
+            throw err;
+          }
           console.log("The file has been saved!");
         });
-        console.log(teamMembers);
       }
     })
     .catch((err) => {
@@ -121,4 +127,4 @@ generateTeam();
 // and Intern classes should all extend from a class named Employee; see the directions
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+// for the provided `render` function to work!
